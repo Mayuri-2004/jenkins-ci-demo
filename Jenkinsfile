@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+
         stage('Checkout') {
             steps {
                 checkout scm
@@ -10,7 +11,10 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'mkdir -p build'
+                sh '''
+                    mkdir -p build
+                    cp index.html build/index.html
+                '''
             }
         }
 
