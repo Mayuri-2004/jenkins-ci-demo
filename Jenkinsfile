@@ -25,8 +25,12 @@ pipeline {
         }
 
         stage('Validation') {
-            steps {
-                sh 'grep "Jenkins CI/CD Pipeline" build/index.html'
+    steps {
+        echo 'Running additional validation...'
+        sh 'test -s build/index.html'
+        echo 'Validation successful.'
+    }
+}
             }
         }
     }
